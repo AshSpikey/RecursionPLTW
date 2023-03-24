@@ -2,7 +2,7 @@ import java.util.*;
 
 public class SideProject {
 
-  /*public static void main(String[] args) {
+  public static void main(String[] args) {
     // creating the scanner object
     Scanner sc = new Scanner(System.in);
     
@@ -51,20 +51,68 @@ public class SideProject {
     //do the math itself:
     
     return 999;
-  }*/
+  }
 
-    public static void main(String[] args){
-        System.out.println(doMath("5*2+7"));
-    }
+    /*public static void main(String[] args){
+        System.out.println(doMath("5-5"));
+    }*/
     
     
     public static String doMath(String str){
+      // ^*/+-
+      
+      String returnString = "";
+
+
+      //debug
+      //System.out.println("index of value is " + str.indexOf("*"));
+
+      if(str.indexOf("^") != -1){
+        String[] twoNumbers = str.split("\\^", 0);
+        int firstNumber = Integer.parseInt(twoNumbers[0]);
+        int secondNumber = Integer.parseInt(twoNumbers[1]);
+        int answer = (int) Math.pow(firstNumber, secondNumber);
+        returnString = Integer.toString(answer);
+
+      }else if(str.indexOf("*") != -1){
+        String[] twoNumbers = str.split("\\*", -1);
+        int firstNumber = Integer.parseInt(twoNumbers[0]);
+        int secondNumber = Integer.parseInt(twoNumbers[1]);
+        int answer = (firstNumber * secondNumber);
+        returnString = Integer.toString(answer);
+
+      }else if(str.indexOf("/") != -1){
+        String[] twoNumbers = str.split("\\/", 0);
+        int firstNumber = Integer.parseInt(twoNumbers[0]);
+        int secondNumber = Integer.parseInt(twoNumbers[1]);
+        int answer = (firstNumber / secondNumber);
+        returnString = Integer.toString(answer);
+
+      }else if(str.indexOf("+") != -1){
+        String[] twoNumbers = str.split("\\+", 0);
+        int firstNumber = Integer.parseInt(twoNumbers[0]);
+        int secondNumber = Integer.parseInt(twoNumbers[1]);
+        int answer = (firstNumber + secondNumber);
+        returnString = Integer.toString(answer);
+
+      }else if(str.indexOf("-") != -1){
+        String[] twoNumbers = str.split("\\-", 0);
+        int firstNumber = Integer.parseInt(twoNumbers[0]);
+        int secondNumber = Integer.parseInt(twoNumbers[1]);
+        int answer = (firstNumber - secondNumber);
+        returnString = Integer.toString(answer);
+
+      }
+
+      return returnString;
+
+
 
         /*
          *
          */
       
-        ArrayList<String> numbers = new ArrayList<String>();
+        /*ArrayList<String> numbers = new ArrayList<String>();
         //str.replace("+"||"-"||"^"||"*"||"/", "#");
         int previousIndex = 0;
         String continuingChar = "";
@@ -72,10 +120,10 @@ public class SideProject {
           String currentChar = str.substring(i, i+1);
           
           if(currentChar.equals("+")||currentChar.equals("-")||currentChar.equals("/")||currentChar.equals("*")||currentChar.equals("^")){
-            numbers.add()
+            numbers.add(currentChar);
           }
           previousIndex++;
-        }
+        }*/
       
       
       
@@ -159,7 +207,6 @@ public class SideProject {
         }*/
         
     
-        return "";
       }
     
       public static boolean isNumber(String str){
