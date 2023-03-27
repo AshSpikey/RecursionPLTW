@@ -53,32 +53,49 @@ public class SideProject {
     return 999;
   }
 
-    /*public static void main(String[] args){
-        System.out.println(doMath("5-5"));
-    }*/
+
+
     
     
     public static String doMath(String str){
-      // ^*/+-
+      // the inputted string should be of just a number followed by an operator, then another number
+      // the code checks if the indexOf the operator is not -1, which means it does exist
+      // it goes along an if, else if set, to make sure that PEMDAS is followed
+      // if the operator does exist then it splits the string at the point the operator exists at
+      // this kills the operator, and seperates the two sides (the two numbers) into seperate arrays
+      // then, the arrays are converted into integers and the math is completed
+      // finally, the final answer is returned to a string and returned
       
       String returnString = "";
 
-
-      //debug
-      //System.out.println("index of value is " + str.indexOf("*"));
-
       if(str.indexOf("^") != -1){
+        // if the index of "^" is NOT -1 (meaning it does exist in the string), the following code occurs
+        
+        
         String[] twoNumbers = str.split("\\^", 0);
+        // An array is created with two elements, one being each value in the equation 
+        // Side note: the reason why the string is escaped is because I was getting a floating something error
+        // Which I had never heard of before, and when I looked it up it said some of the Strings were actually
+        // Like keywords, and so in order to fix it, you escape it, meaning you put the two backslashes in front
+
         int firstNumber = Integer.parseInt(twoNumbers[0]);
         int secondNumber = Integer.parseInt(twoNumbers[1]);
+        // both numbers are parsed into integers 
+
         int answer = (int) Math.pow(firstNumber, secondNumber);
+        // the actual math occurs, in this case we have to cast our Math.pow into an integer because it returns a float 
+
+
         returnString = Integer.toString(answer);
+        // the final answer is parsed from a String into an int
 
       }else if(str.indexOf("*") != -1){
-        String[] twoNumbers = str.split("\\*", -1);
+        // the only difference between this block of code and the previous one is the operator 
+        String[] twoNumbers = str.split("\\*", 0);
         int firstNumber = Integer.parseInt(twoNumbers[0]);
         int secondNumber = Integer.parseInt(twoNumbers[1]);
         int answer = (firstNumber * secondNumber);
+        // this here is the only difference, because it simply does multiplication instead of exponent 
         returnString = Integer.toString(answer);
 
       }else if(str.indexOf("/") != -1){
@@ -105,114 +122,7 @@ public class SideProject {
       }
 
       return returnString;
+      // here returns the final answer in string form
 
-
-
-        /*
-         *
-         */
-      
-        /*ArrayList<String> numbers = new ArrayList<String>();
-        //str.replace("+"||"-"||"^"||"*"||"/", "#");
-        int previousIndex = 0;
-        String continuingChar = "";
-        for(int i = 0; i < str.length(); i ++){
-          String currentChar = str.substring(i, i+1);
-          
-          if(currentChar.equals("+")||currentChar.equals("-")||currentChar.equals("/")||currentChar.equals("*")||currentChar.equals("^")){
-            numbers.add(currentChar);
-          }
-          previousIndex++;
-        }*/
-      
-      
-      
-      /*ArrayList<String> initString = new ArrayList<String>();
-        ArrayList<String> operators = new ArrayList<String>();
-        ArrayList<String> numbers = new ArrayList<String>();
-
-        String[] arr = str.split("");
-        //System.out.println("arr is ");
-        for(String s: arr){
-            //System.out.println(s);
-            initString.add(s);
-        }
-    
-        for(int i = 0; i < initString.size(); i++){
-            if(initString.get(i).equals("+") || initString.get(i).equals("-") || initString.get(i).equals("*") || initString.get(i).equals("+") || initString.get(i).equals("^")){
-            operators.add(initString.get(i));
-            initString.set(i, "#");
-          }
-          
-        }
-    
-        int previousIndex = 0;
-        for(int i = 0; i < initString.size(); i ++){
-          if(initString.get(i).equals("#")){
-            initString.remove(i);
-            String number = "";
-            System.out.println("How many times does this occur");
-            for(int j = previousIndex; j < (i - previousIndex); j++){
-              System.out.println(initString.get(j));
-              number += initString.get(j);
-              previousIndex++;
-            }
-            previousIndex--;
-            i--;
-            System.out.println("adding a number " + number);
-            numbers.add(number);
-          }
-        }
-    
-        String finalString = "";
-        for(int i = 0; i < operators.size(); i ++){
-            
-          int firstNumb = Integer.parseInt(numbers.get(i));
-          int secondNumb = Integer.parseInt(numbers.get(i + 1));
-          System.out.println("Numbers next is " + numbers.get(i+1));
-
-          //ln("Operators is ");
-          //System.out.println(operators.get(i));
-
-          
-          if(operators.get(i).equals("^")){
-              finalString = Integer.toString((int) Math.pow(firstNumb,secondNumb));
-          }
-
-          if(operators.get(i).equals("*")){
-            finalString = Integer.toString(firstNumb*secondNumb);
-            System.out.println("Mult occurs. First numb is " + firstNumb + " second numb is " + secondNumb + " and finalstring is " + finalString);
-          }
-
-          if(operators.get(i).equals("/")){
-          finalString = Integer.toString(firstNumb/secondNumb);
-          }
-
-          if(operators.get(i).equals("+")){
-              finalString = Integer.toString(firstNumb+secondNumb);
-          }
-
-          if(operators.get(i).equals("-")){
-              finalString = Integer.toString(firstNumb-secondNumb);
-          }
-
-          
-
-          
-
-          numbers.remove(i);
-          numbers.remove(i);
-          operators.remove(i);
-          i = 0;
-        }*/
-        
-    
-      }
-    
-      public static boolean isNumber(String str){
-        if(str == "0" || str == "1" || str == "2" || str == "3" || str == "4" || str == "5" || str == "6" || str == "7" ||str == "8" || str == "9"){
-          return true;
-        }
-        return false;
-      }
-}
+    }
+  }
